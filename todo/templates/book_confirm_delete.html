@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Use a clean font */
+            background-color: #f4f4f4; /* Light background color */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add some padding */
+        }
+        h2 {
+            color: #d9534f; /* Red text color for the heading */
+            text-align: center; /* Center align the heading */
+        }
+        p {
+            text-align: center; /* Center align the paragraph */
+            font-size: 18px; /* Increase font size for the prompt */
+            color: #555; /* Dark gray color for better readability */
+        }
+        form {
+            background: white; /* White background for the form */
+            padding: 20px; /* Add padding to the form */
+            border-radius: 5px; /* Round the corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            max-width: 400px; /* Limit the width of the form */
+            margin: auto; /* Center the form horizontally */
+        }
+        button {
+            background-color: #d9534f; /* Red background for the button */
+            color: white; /* White text color */
+            padding: 10px 15px; /* Padding around the button text */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Round the corners */
+            cursor: pointer; /* Change cursor on hover */
+            font-size: 16px; /* Increase font size */
+            width: 100%; /* Full width for the button */
+            margin-top: 10px; /* Space above the button */
+        }
+        button:hover {
+            background-color: #c9302c; /* Darker red on hover */
+        }
+        a {
+            display: block; /* Make the link a block element */
+            margin-top: 20px; /* Space above the link */
+            text-align: center; /* Center the link */
+            text-decoration: none; /* Remove underline from link */
+            color: #4CAF50; /* Green text color for the link */
+        }
+        a:hover {
+            text-decoration: underline; /* Underline on hover for clarity */
+        }
+        nav {
+            display: flex; /* Use flexbox for the navbar */
+            justify-content: center; /* Center the navbar items */
+            background: #333; /* Dark background for the navbar */
+        }
+        nav a {
+            color: white; /* White text color for navbar links */
+            padding: 15px 20px; /* Padding for navbar links */
+            text-decoration: none; /* Remove underline from links */
+            text-align: center; /* Center align text */
+        }
+        nav a:hover {
+            background: #575757; /* Darker background on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home_page' %}">Home</a>
+        <a href="{% url 'read_books' %}">Add Book</a>
+        <a href="{% url 'read_list' %}">Books List</a>
+    </nav>
+    <h2>Delete Task</h2>
+    <p>Are you sure you want to delete "{{ object.title }}"?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+    </form>
+    <a href="{% url 'read_list' %}">Cancel</a>
+</body>
+</html>

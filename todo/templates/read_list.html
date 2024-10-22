@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Use a clean font */
+            background-color: #f4f4f4; /* Light background color */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add some padding */
+        }
+        h1 {
+            color: #333; /* Dark text color for the heading */
+            text-align: center; /* Center align the heading */
+        }
+        ul {
+            list-style-type: none; /* Remove default list styling */
+            padding: 0; /* Remove default padding */
+        }
+        li {
+            background: white; /* White background for each list item */
+            padding: 15px; /* Padding for the list items */
+            margin: 10px 0; /* Margin between list items */
+            border-radius: 5px; /* Round the corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            display: flex; /* Use flexbox for item layout */
+            justify-content: space-between; /* Space between title and links */
+            align-items: center; /* Center align items vertically */
+        }
+        a {
+            color: #4CAF50; /* Green text color for links */
+            text-decoration: none; /* Remove underline from links */
+            padding: 5px 10px; /* Padding around link text */
+            border: 1px solid transparent; /* Initial border for hover effect */
+            border-radius: 3px; /* Round the corners */
+        }
+        a:hover {
+            border: 1px solid #4CAF50; /* Add border on hover */
+            background-color: #e8f5e9; /* Light green background on hover */
+        }
+        .add-book-link {
+            display: block; /* Make the link a block element */
+            margin-top: 20px; /* Space above the link */
+            text-align: center; /* Center the link */
+            text-decoration: none; /* Remove underline from link */
+            color: #4CAF50; /* Green text color for the link */
+        }
+        .add-book-link:hover {
+            text-decoration: underline; /* Underline on hover for clarity */
+        }
+        nav {
+            display: flex; /* Use flexbox for the navbar */
+            justify-content: center; /* Center the navbar items */
+            background: #333; /* Dark background for the navbar */
+        }
+        nav a {
+            color: white; /* White text color for navbar links */
+            padding: 15px 20px; /* Padding for navbar links */
+            text-decoration: none; /* Remove underline from links */
+            text-align: center; /* Center align text */
+        }
+        nav a:hover {
+            background: #575757; /* Darker background on hover */
+        }
+    </style>
+</head>
+<body>
+   
+    <nav>
+        <a href="{% url 'home_page' %}">Home</a>
+        <a href="{% url 'read_books' %}">Add Book</a>
+        <a href="{% url 'read_list' %}">Books List</a>
+    </nav>
+    <h1>Book Read List</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task.title }} - {{ task.author }}
+            <div>
+                <a href="{% url 'book_update' task.pk %}">Edit</a> | 
+                <a href="{% url 'book_delete' task.pk %}">Delete</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <a class="add-book-link" href="{% url 'read_books' %}">Add a New Book</a>
+</body>
+</html>
