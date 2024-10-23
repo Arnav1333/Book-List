@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'chaiDB',  # This is your POSTGRES_DB
         'USER': 'chaiaurcode',  # This is your POSTGRES_USER
         'PASSWORD': 'chaiaurcode',  # This is your POSTGRES_PASSWORD
-        'HOST': 'db-db-1 ',  # Since PostgreSQL is running on localhost
+        'HOST': '127.0.0.1',  # Since PostgreSQL is running on localhost
         'PORT': '5432',  # The port PostgreSQL is running on
     }
 }
